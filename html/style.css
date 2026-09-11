@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'Barlow';
+    src: url('assets/BarlowCondensed-BoldItalic.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Barlow', sans-serif;
+    user-select: none;
+}
+
+#wrapper {
+    --margin: 10px;
+    position: absolute;
+    display: flex;
+}
+
+.pos-top-left {
+    top: var(--margin);
+    left: var(--margin);
+}
+.pos-top-center {
+    top: var(--margin);
+    left: 0;
+    width: 100%;
+    justify-content: center;
+}
+.pos-top-right {
+    top: var(--margin);
+    right: var(--margin);
+}
+.pos-middle-left {
+    top: 0;
+    bottom: 0;
+    left: var(--margin);
+    align-items: center;
+}
+.pos-middle-right {
+    top: 0;
+    bottom: 0;
+    right: var(--margin);
+    align-items: center;
+}
+.pos-bottom-left {
+    bottom: var(--margin);
+    left: var(--margin);
+}
+.pos-bottom-center {
+    bottom: var(--margin);
+    left: 0;
+    width: 100%;
+    justify-content: center;
+}
+.pos-bottom-right {
+    bottom: var(--margin);
+    right: var(--margin);
+}
+
+#achievement {
+    width: 440px;
+    background: #0d0d0d;
+    border: 1px solid #2b2b2b;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-34px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.pos-top-right #achievement,
+.pos-middle-right #achievement,
+.pos-bottom-right #achievement {
+    transform: translateX(34px);
+}
+
+#achievement.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 14px;
+}
+
+.icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 9px;
+    background: linear-gradient(160deg, #6ee4f5 0%, #4fd4e8 55%, #34b6cd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.icon-inner {
+    width: 52px;
+    height: 52px;
+    border: 2px solid #0f3d47;
+    border-radius: 7px;
+    color: #0f3d47;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.icon-inner svg {
+    width: 34px;
+    height: 34px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.icon-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.text {
+    min-width: 0;
+}
+
+.title {
+    font-size: 25px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #35e06a;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+}
+
+.points {
+    height: 40px;
+    background: #f2e50c;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.35s cubic-bezier(0.2, 0.9, 0.3, 1) 0.22s;
+}
+
+#achievement.visible .points {
+    clip-path: inset(0 0 0 0);
+}
+
+#achievement:not(.visible) .points {
+    transition: none;
+}
+
+.star {
+    width: 21px;
+    height: 21px;
+    fill: #0a0a0a;
+}
+
+#amount {
+    font-size: 26px;
+    color: #0a0a0a;
+    letter-spacing: 0.5px;
+}
